@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wireframe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header__logo">
+      <img src="img/logo.webp" alt="Game Logo" />
+      <span class="header__tagline">Dota 2 </span>
+    </div>
+    <nav class="header__menu">
+      <a href="index.html">Главная</a>
+      <a href="about.html">О компании</a>
+      <a href="market.html">Корзина</a>
+    </nav>
+    <button id="themeToggle" class="header__login-btn">Сменить тему</button>
+    <button class="header__login-btn">Войти</button>
+  </header>
+
+  <section class="hero">
+    <img
+      src="img/main.jpg"
+      alt="Hero Image"
+      class="hero__image"
+    />
+  </section>
+  <section class="video">
+    <iframe
+      class="video__iframe"
+      src="https://www.youtube.com/embed/LHpHFcspTck"
+      title="YouTube video player"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+
+<section class="carousel">
+  <div class="carousel__container" id="carouselContainer">
+    <div class="carousel__slide">
+      <img src="img/screenshot/screenshot1.jpg" alt="Карусель 1" class="carousel__image" />
+    </div>
+    <div class="carousel__slide">
+      <img src="img/screenshot/screenshot2.jpg" alt="Карусель 2" class="carousel__image" />
+    </div>
+    <div class="carousel__slide">
+      <img src="img/screenshot/screenshot3.jpg" alt="Карусель 3" class="carousel__image" />
+    </div>
+    <div class="carousel__slide">
+      <img src="img/screenshot/screenshot4.jpg" alt="Карусель 4" class="carousel__image" />
+    </div>
+    <div class="carousel__slide">
+      <img src="img/screenshot/screenshot5.jpg" alt="Карусель 5" class="carousel__image" />
+    </div>
+  </div>
+
+  <div class="carousel__dots" id="carouselDots">
+    <span class="carousel__dot active" data-slide="0"></span>
+    <span class="carousel__dot" data-slide="1"></span>
+    <span class="carousel__dot" data-slide="2"></span>
+    <span class="carousel__dot" data-slide="3"></span>
+    <span class="carousel__dot" data-slide="4"></span>
+  </div>
+</section>
+
+  <section class="benefits">
+    <h2>Преимущества</h2>
+  
+    <input type="radio" name="benefit" id="b-1" checked>
+    <input type="radio" name="benefit" id="b-2">
+    <input type="radio" name="benefit" id="b-3">
+  
+    <div class="benefits__slider-container">
+      <div class="benefits__slider">
+        <div class="benefits__item">
+          <h3>Масштабный и увлекательный мир</h3>
+          <p> На карте в Dote 2 есть фонтаны с лотусами они очень красивые. Есть очень красивый лес который оберегают лесные жители называемые крипы.</p>
+        </div>
+        <div class="benefits__item">
+          <h3>Социальное взаимодействие и совместные приключения</h3>
+          <p>Игра способствует социализации, предоставляя возможности для общения с игроками со всего мира.PvP-баталии объединяют людей, создавая чувство команды и позволяя строить долгосрочные дружеские отношения.</p>
+        </div>
+        <div class="benefits__item">
+          <h3>Разнообразие контента для разных типов игроков</h3>
+          <p>Dota 2  предлагает игрокам огромный список героев наполненными  интересными способностями . Игроки могут выбрать любого героя и выьрать любые способности ему в режиме Ability Draft, и всегда находить что-то новое. </p>
+        </div>
+      </div>
+      <label for="b-3" class="benefits__button benefits__button--prev btn-b1">&lt;</label>
+      <label for="b-2" class="benefits__button benefits__button--next btn-b1">&gt;</label>
+  
+      <label for="b-1" class="benefits__button benefits__button--prev btn-b2">&lt;</label>
+      <label for="b-3" class="benefits__button benefits__button--next btn-b2">&gt;</label>
+  
+      <label for="b-2" class="benefits__button benefits__button--prev btn-b3">&lt;</label>
+      <label for="b-1" class="benefits__button benefits__button--next btn-b3">&gt;</label>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Отзывы</h2>
+
+    <input type="radio" name="testimonial" id="t-1" checked>
+    <input type="radio" name="testimonial" id="t-2">
+    <input type="radio" name="testimonial" id="t-3">
+
+    <div class="testimonials__slider-container">
+      <div class="testimonials__slider">
+        <div class="testimonials__item">
+          <img src="img/avatar/1.jpg" alt="Avatar 1" />
+          <p>«Dota 2 всё ёще удивляет я играл в неё 10к часов и все равно не понимаю как рабоет ульт од.»</p>
+          <span>- Логика</span>
+        </div>
+        <div class="testimonials__item">
+          <img src="img/avatar/2.webp" alt="Avatar 2" />
+          <p>«В этой игре надо бояться только женщин и пуджа в лесу .»</p>
+          <span>- ересь </span>
+        </div>
+        <div class="testimonials__item">
+          <img src="img/avatar/3.jpg" alt="Avatar 3" />
+          <p>«Морф мой любимый герой.»</p>
+          <span>- Изгой </span>
+        </div>
+      </div>
+      
+      <label for="t-3" class="testimonials__button testimonials__button--prev btn-1">&lt;</label>
+      <label for="t-2" class="testimonials__button testimonials__button--next btn-1">&gt;</label>
+      
+      <label for="t-1" class="testimonials__button testimonials__button--prev btn-2">&lt;</label>
+      <label for="t-3" class="testimonials__button testimonials__button--next btn-2">&gt;</label>
+      
+      <label for="t-2" class="testimonials__button testimonials__button--prev btn-3">&lt;</label>
+      <label for="t-1" class="testimonials__button testimonials__button--next btn-3">&gt;</label>
+    </div>
+  </section>
+  
+      <button class="testimonials__button testimonials__button--prev" id="prevBtn" aria-label="Предыдущий отзыв">&lt;</button>
+      <button class="testimonials__button testimonials__button--next" id="nextBtn" aria-label="Следующий отзыв">&gt;</button>
+    </div>
+  </section>
+  
+
+  <section class="features">
+  <h2>Особенности</h2>
+  <div class="features__items">
+    <div class="features__item">
+      <h3>Глубокая и непрерывная история</h3>
+      <p>Каждый герой Dota 2 имеет уникальную предысторию, которая переплетается с общей мифологией мира. От древних противостояний Стражей до появления новых персонажей — игра предлагает игрокам погружение в богатую и таинственную вселенную, которая постоянно развивается.</p>
+    </div>
+    <div class="features__item">
+      <h3>Адаптивность для новичков</h3>
+      <p>Dota 2 сочетает простоту для новичков с глубиной для опытных игроков. Система обучения помогает новичкам освоиться, а мастерство игры открывает безграничные возможности для стратегий и тактики. Каждый матч становится уникальным благодаря разнообразию героев и игровых ситуаций.</p>
+    </div>
+    <div class="features__item">
+      <h3>Живой игровой мир с событиями в реальном времени</h3>
+      <p>Dota 2 — это не только игра, но и динамичное сообщество. Регулярные обновления, сезонные события, турниры и киберспортивные чемпионаты вовлекают игроков в жизнь вселенной. Каждое событие вносит изменения, делая игровой процесс еще более захватывающим.</p>
+    </div>
+  </div>
+  </section>
+
+
+<section class="products">
+  <h2>Наши предложения</h2>
+  <div class="products__container">
+    <div class="product__card">
+      <img src="img/products/1.jpeg" alt="Product 1" class="product__image" />
+      <h3 class="product__title">Аркана на фантом лансер </h3>
+      <p class="product__description">Стоимость: 25 евро</p>
+      <h3 class="product__title">Осталось:</h3>
+      <div class="product__quantity">
+        <div class="quantity__bar"></div>
+        <span class="quantity__number">0</span>
+      </div>
+    </div>
+    <div class="product__card">
+      <img src="img/products/2.jpg" alt="Product 2" class="product__image" />
+      <h3 class="product__title">Аркана на тероблейда</h3>
+      <p class="product__description">Стоимость: 40 евро</p>
+      <h3 class="product__title">Осталось:</h3>
+      <div class="product__quantity">
+        <div class="quantity__bar"></div>
+        <span class="quantity__number">0</span>
+      </div>
+    </div>
+    <div class="product__card">
+      <img src="img/products/3.jpeg" alt="Product 3" class="product__image" />
+      <h3 class="product__title">Аркана на зевса </h3>
+      <p class="product__description">Стоимость: 20 евро</p>
+      <h3 class="product__title">Осталось:</h3>
+      <div class="product__quantity">
+        <div class="quantity__bar"></div>
+        <span class="quantity__number">0</span>
+      </div>
+    </div>
+    <div class="product__card">
+      <img src="img/products/4.jpeg" alt="Product 4" class="product__image" />
+      <h3 class="product__title">батл пасс </h3>
+      <p class="product__description">Стоимость: 10 евро</p>
+      <h3 class="product__title">Осталось:</h3>
+      <div class="product__quantity">
+        <div class="quantity__bar"></div>
+        <span class="quantity__number">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="products__button-container">
+    <button class="products__see-all-btn">Увидеть все предложения</button>
+  </div>
+</section>
+
+  <section class="signup">
+    <h2>Присоединяйтесь и начните играть!</h2>
+    <form class="signup__form">
+      <input type="email" placeholder="Ваш Email" required />
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+  </section>
+
+  <div id="modal" class="modal">
+    <div class="modal__content">
+      <h2>Введите данные</h2>
+      <form id="modalForm" class="modal__form">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required />
+  
+        <label for="phone">Телефон:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required />
+  
+        <div class="modal__actions">
+          <button type="submit">Отправить</button>
+          <button type="button" id="closeModal">Закрыть</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <nav class="footer__menu">
+      <a href="#">Главная</a>
+      <a href="#">Контакты</a>
+    </nav>
+    <ul class="footer__social">
+      <li>
+          <a href="https://x.com/DOTA2?mx=2" class="footer__link">
+              <img src="img/socials/x.png" alt="TwitterX link">
+          </a>
+      </li>
+      <li>
+          <a href="https://www.instagram.com/dota_2/" class="footer__link">
+              <img src="img/socials/instagram.png" alt="Instagram link">
+          </a>
+      </li>
+      <li>
+          <a href="https://www.facebook.com/dota2/" class="footer__link">
+              <img src="img/socials/facebook.png" alt="Facebook link">
+          </a>
+      </li>
+      <li>
+          <a href="https://www.youtube.com/user/dota2/videos" class="footer__link">
+              <img src="img/socials/youtube.webp" alt="YouTube link">
+          </a>
+      </li>
+  </ul>
+  </footer>
+
+  <script src="js/button.js" defer></script>
+  <script src="js/submit.js" defer></script>
+  <script src="js/carousel.js" defer></script>
+  <script src="js/quantity.js" defer></script>
+</body>
+</html>

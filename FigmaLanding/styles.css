@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Odibee Sans', sans-serif;
+  margin: 0;
+}
+
+.hero {
+  position: relative;
+  min-height: 1080px;
+  width: 100%;
+  background: #9108e0 url("img/background/R05Fdp.png") no-repeat center center;
+  background-size: cover;
+}
+
+.text-block {
+  position: absolute;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  position: absolute;
+  left: 2.5%;
+  top: 7%;
+  width: 50%;
+  font-size: 13.5vw;
+}
+
+.dev {
+  position: absolute;
+  left: 21%;
+  top: 30%;
+  width: 31.5%;
+  font-size: 3.5vw;
+}
+
+.published {
+  position: absolute;
+  left: 23.8%;
+  top: 37%;
+  width: 31.5%;
+  font-size: 3.5vw;
+}
+
+.and-playism {
+  position: absolute;
+  left: 29.4%;
+  top: 43%;
+  width: 31.5%;
+  font-size: 3.5vw;
+  text-align: right;
+}
+
+.release {
+  position: absolute;
+  left: 21.7%;
+  top: 50%;
+  width: 31.5%;
+  font-size: 3.5vw;
+}
+
+.keywords {
+  left: 0;
+  top: 1005px;
+  min-width: 1920px;
+  height: 75px;
+  font-size: 30px;
+  background-color: rgba(31, 41, 51, 0.77);
+  justify-content: center;
+}
+
+.features-section {
+  background-color: #7b10d3;
+  color: #fff;
+  padding: 40px 80px;
+}
+
+.features-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.features-content h2 {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.features-content p {
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.trailer-container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.trailer-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.screenshots-section {
+  background-color: #8b10dd;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.screenshots-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.screenshots-header h2 {
+  font-size: 64px;
+  color: #fff;
+  margin: 0 20px;
+}
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.screenshots-grid img {
+  width: 100%;
+  height: auto;
+  border: 3px solid #000C1A;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 15px;
+}
+
+.reviews-section {
+  background-color: #8718e2;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.reviews-section h2 {
+  font-size: 64px;
+  color: #fff;
+  margin-bottom: 40px;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: auto;
+  margin: 0 auto;
+}
+
+.review-card {
+  display: flex;
+  justify-content: center;
+}
+
+.review-circle {
+  background-color: #000C1A;
+  color: #ffffff;
+  width: 485px;
+  height: 525px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px; /* Увеличил padding для лучшего отступа */
+  text-align: center; /* Центрирование текста */
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.review-circle p {
+  max-width: 80%; /* Делаем текст адаптивным внутри круга */
+  font-size: 16px; /* Увеличил размер для лучшей читаемости */
+  line-height: 1.6; /* Уменьшил line-height, чтобы текст не "разъезжался" */
+  margin: 0 auto 10px auto; /* Центрируем и даем отступ вниз */
+  word-wrap: break-word; /* Перенос длинных слов */
+}
+
+.review-circle span {
+  font-size: 14px;
+  text-align: center;
+}
+
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.social-icons img {
+  width: 32px;
+  height: auto;
+  margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+  .buttons-container {
+    display: none;
+  }
+  .features-section {
+    padding: 20px 10px;
+  }
+  .features-content h2 {
+    font-size: 32px;
+  }
+  .features-content p {
+    font-size: 16px;
+  }
+  .trailer-section {
+    padding: 20px 0;
+  }
+  .screenshots-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .screenshots-header h2 {
+    font-size: 36px;
+  }
+  .footer-text {
+    font-size: 10px;
+  }
+  .social-icons img {
+    width: 24px;
+    margin: 0 4px;
+  }
+}
+
+@media (max-width: 1820px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .reviews-section h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 1919px) {
+  .keywords {
+    display: none;
+  }
+}

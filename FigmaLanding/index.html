@@ -10,6 +10,122 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- Всплывающее окно заказа -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrderModal()">&times;</span>
+      <h2>Оформление заказа</h2>
+      <form id="orderForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Введите email" required>
+
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" placeholder="Введите телефон" required>
+
+        <label for="address">Адрес</label>
+        <input type="text" id="address" placeholder="Введите адрес" required>
+
+        <button type="submit">Оформить заказ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Всплывающее окно подтверждения покупки -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSuccessModal()">&times;</span>
+      <h2>Покупка совершена!</h2>
+      <p>Спасибо за заказ. Мы свяжемся с вами в ближайшее время.</p>
+      <button onclick="closeSuccessModal()">Закрыть</button>
+    </div>
+  </div>
+
+  <script>
+    function openOrderModal() {
+      document.getElementById("orderModal").style.display = "flex";
+    }
+
+    function closeOrderModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+    function openSuccessModal() {
+      document.getElementById("successModal").style.display = "flex";
+    }
+
+    function closeSuccessModal() {
+      document.getElementById("successModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      let orderModal = document.getElementById("orderModal");
+      let successModal = document.getElementById("successModal");
+
+      if (event.target === orderModal) {
+        closeOrderModal();
+      }
+      if (event.target === successModal) {
+        closeSuccessModal();
+      }
+    };
+
+    document.getElementById("orderForm").onsubmit = function(event) {
+      event.preventDefault(); // Останавливаем стандартную отправку формы
+      closeOrderModal(); // Закрываем окно заказа
+      openSuccessModal(); // Открываем окно успешной покупки
+    };
+  </script>
+
+  <!-- Верхняя панель -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <h1 class="logo">MiSide</h1>
+      <button class="login-btn" onclick="openModal()">Вход</button>
+    </div>
+  </header>
+
+  <!-- Модальное окно для входа -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Вход</h2>
+      <form>
+        <label for="username">Логин</label>
+        <input type="text" id="username" placeholder="Введите логин">
+
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="Введите пароль">
+
+        <button type="submit">Войти</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Верхняя панель -->
+<header class="navbar">
+  <div class="navbar-container">
+    <h1 class="logo">MiSide</h1>
+    <button class="login-btn" onclick="openModal()">Вход</button>
+  </div>
+</header>
+
+<!-- Модальное окно для входа -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Вход</h2>
+    <form>
+      <label for="username">Логин</label>
+      <input type="text" id="username" placeholder="Введите логин">
+
+      <label for="password">Пароль</label>
+      <input type="password" id="password" placeholder="Введите пароль">
+
+      <button type="submit">Войти</button>
+    </form>
+  </div>
+</div>
+
   <div class="hero">
     <h1 class="text-block title">MiSide</h1>
     <h2 class="text-block dev">Developed by: AIHASTO</h2>
@@ -38,6 +154,50 @@
       </iframe>
     </div>
   </section>
+  <section class="products">
+    <h2>Наши предложения</h2>
+    <div class="products__container">
+      <div class="product__card">
+        <img src="img/products/1.jpeg" alt="Product 1" class="product__image" />
+        <h3 class="product__title">MiSide "Мита в костюме Adidas" </h3>
+        <p class="product__description">Стоимость: 25 евро</p>
+        <h3 class="product__title">Осталось:10</h3>
+        <div class="product__quantity">
+          <button class="order-btn" onclick="openOrderModal()">Заказать</button>
+
+        </div>
+      </div>
+      <div class="product__card">
+        <img src="img/products/2.jpg" alt="Product 2" class="product__image" />
+        <h3 class="product__title">MiSide "Озвучка S.T.A.L.K.E.R."</h3>
+        <p class="product__description">Стоимость: 40 евро</p>
+        <h3 class="product__title">Осталось:3</h3>
+        <div class="product__quantity">
+          <button class="order-btn" onclick="openOrderModal()">Заказать</button>
+
+        </div>
+      </div>
+      <div class="product__card">
+        <img src="img/products/3.jpeg" alt="Product 3" class="product__image" />
+        <h3 class="product__title">MiSide "Футболка - Пивозавр" </h3>
+        <p class="product__description">Стоимость: 20 евро</p>
+        <h3 class="product__title">Осталось:16</h3>
+        <div class="product__quantity">
+          <button class="order-btn" onclick="openOrderModal()">Заказать</button>
+
+        </div>
+      </div>
+      <div class="product__card">
+        <img src="img/products/4.jpeg" alt="Product 4" class="product__image" />
+        <h3 class="product__title">MiSide "Флаттершай из My Little Pony: Equestria Girls" </h3>
+        <p class="product__description">Стоимость: 7 евро</p>
+        <h3 class="product__title">Осталось: 37 шт  </h3>
+        <div class="product__quantity">
+          <button class="order-btn" onclick="openOrderModal()">Заказать</button>
+        </div>
+      </div>
+    </div>
+  
 
   <section class="screenshots-section">
     <div class="screenshots-header">
@@ -86,14 +246,6 @@
           </p>
         </div>
       </div>
-
-      <div class="review-card">
-        <div class="review-circle">
-          <p>
-            "Ждал игру полтора года, и честно сказать она уже на начале оправдывает все ожидания, разрабы молодцы.
-            Пользователь Стима йоу. "
-          </p>
-        </div>
       </div>
     </div>
   </section>

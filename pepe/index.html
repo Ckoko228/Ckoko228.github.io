@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Pepe Coin </title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" 
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script>
+    function openModal() {
+      document.getElementById("loginModal").style.display = "flex";
+    }
+  
+    function closeModal() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+  </script>
+  
+  <!-- Всплывающее окно заказа -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeOrderModal()">&times;</span>
+      <h2>Оформление заказа</h2>
+      <form id="orderForm">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Введите email" required>
+
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" placeholder="Введите телефон" required>
+
+        <label for="address">Адрес</label>
+        <input type="text" id="address" placeholder="Введите адрес" required>
+
+        <button type="submit">Оформить заказ</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Всплывающее окно подтверждения покупки -->
+  <div id="successModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeSuccessModal()">&times;</span>
+      <h2>Покупка совершена!</h2>
+      <p>Спасибо за заказ. Мы свяжемся с вами в ближайшее время.</p>
+      <button onclick="closeSuccessModal()">Закрыть</button>
+    </div>
+  </div>
+
+  <script>
+    function openOrderModal() {
+      document.getElementById("orderModal").style.display = "flex";
+    }
+
+    function closeOrderModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+    function openSuccessModal() {
+      document.getElementById("successModal").style.display = "flex";
+    }
+
+    function closeSuccessModal() {
+      document.getElementById("successModal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      let orderModal = document.getElementById("orderModal");
+      let successModal = document.getElementById("successModal");
+
+      if (event.target === orderModal) {
+        closeOrderModal();
+      }
+      if (event.target === successModal) {
+        closeSuccessModal();
+      }
+    };
+
+    document.getElementById("orderForm").onsubmit = function(event) {
+      event.preventDefault(); // Останавливаем стандартную отправку формы
+      closeOrderModal(); // Закрываем окно заказа
+      openSuccessModal(); // Открываем окно успешной покупки
+    };
+  </script>
+
+  <!-- Верхняя панель -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <h1 class="logo">Pepe Coin</h1>
+      <button class="login-btn" onclick="openModal()">Вход</button>
+    </div>
+  </header>
+
+  <!-- Модальное окно для входа -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Вход</h2>
+      <form>
+        <label for="username">Логин</label>
+        <input type="text" id="username" placeholder="Введите логин">
+
+        <label for="password">Пароль</label>
+        <input type="password" id="password" placeholder="Введите пароль">
+
+        <button type="submit">Войти</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Верхняя панель -->
+<header class="navbar">
+  <div class="navbar-container">
+    <h1 class="logo">Pepe Coin</h1>
+    <button class="login-btn" onclick="openModal()">Вход</button>
+  </div>
+</header>
+
+<!-- Модальное окно для входа -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Вход</h2>
+    <form>
+      <label for="username">Логин</label>
+      <input type="text" id="username" placeholder="Введите логин">
+
+      <label for="password">Пароль</label>
+      <input type="password" id="password" placeholder="Введите пароль">
+
+      <button type="submit">Войти</button>
+    </form>
+  </div>
+</div>
+
+  <div class="hero">
+    <h1 class="text-block title">Pepe Coin</h1>
+    <h2 class="text-block dev">Developed by: Timothy Dacilato</h2>
+    <h2 class="text-block release">Release: 15/04/2023</h2>
+  </div>
+  
+  <section class="features-section">
+    <div class="features-content">
+      <h2>Features of the Experience</h2>
+      <p>
+        The creator of the #Pepe coin, Timothy Dacilato, announces an unimaginable price increase in 2025 In an exclusive statement today, Timothy Dacilato, the mysterious creator of Pepe Coin (PEPE), made a bold and unexpected statement that caused shock in the cryptocurrency community
+      </p>
+    </div>
+  </section>
+  
+  
+
+  <section class="screenshots-section">
+    <div class="screenshots-header">
+      <h2>SCREENSHOTS</h2>
+    </div>
+
+    <div class="screenshots-grid">
+      <img src="img/screenshots/1.jpg" alt="Screenshot 1">
+      <img src="img/screenshots/2.jpg" alt="Screenshot 2">
+      <img src="img/screenshots/3.jpg" alt="Screenshot 3">
+      <img src="img/screenshots/4.jpg" alt="Screenshot 4">
+      <img src="img/screenshots/5.jpg" alt="Screenshot 5">
+      <img src="img/screenshots/6.png" alt="Screenshot 6">
+    </div>
+  </section>
+
+  <section class="reviews-section">
+    <h2>REVIEWS OF THIS GAME</h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-circle">
+          <p>
+            "Игра от отечественного разработчика. Приятно удивила! Я думала, что данный проект - это просто продукт хайпа анимешников и любителей иссекаев. Но! В игре, помимо прикольной графики и, в общем-то аниме стилистики, есть геймплей, миниигры, и все классические хоррор-составляющие. Также в MiSide завезли интересный сюжет и несколько концовок. Главная героиня интересная, а второплановые персонажи, несмотря на то, что по сути это одна и та же расшаренная моделька, уникальны. Саунд приятный, картинка приятная, сюжет приятный, игра приятная, хороший проект.
+          Пользователь Стима Woom0n."
+          </p>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-circle">
+          <p>
+            "игра - доказательство того, что бюджет не самое важное. великолепная и единственная игра в своём роде. хвала двум малоизвестным разработчикам с России. одно из лучшего, что я когда-либо проходил, невероятно проработанная игра по всем параметрам, включающая пасхалки и секреты, с нетерпением жду мирный режим. оценки игры полностью заслуженные.
+            Пользователь Стима risuyu krovyu."
+          </p>
+        </div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-circle">
+          <p>
+            "Игра стала супер успешной и я ощутил на себе почему.
+             В ней не мало минусов все-таки игра от инди-компании, но персонажи и разнообразный геймплей сделали ее настоящим открытием конца года.
+            Надеюсь, что это будет мощным толчок для разработчиков и мы увидим от них еще много подобных игр.
+            Пользователь стима yaderi.
+             "
+          </p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

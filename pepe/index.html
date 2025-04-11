@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -30,8 +29,8 @@
 
   <div class="hero">
     <h1 class="text-block title">Pepe Coin</h1>
-    <h2 class="text-block dev">Developed by: Timothy Dacilato</h2>
-    <h2 class="text-block release">Release: 15/04/2023</h2>
+    <h2 class="text-block dev">Разработчик: Тимоти Дачилато</h2>
+    <h2 class="text-block release">Релиз: 15.04.2023</h2>
   </div>
 
   <section class="Analysis">
@@ -43,22 +42,10 @@
     </div>
   </section>
 
-  <div class="exchange-links">
-    <a href="https://www.binance.com/en/trade/PEPE_USDT" target="_blank" class="exchange-link">
-      <img src="img/link/1.png" alt="Binance">
-    </a>
-    <a href="https://www.bybit.com/en/trade/spot/PEPE/USDT" target="_blank" class="exchange-link">
-      <img src="img/link/2.png" alt="Bybit">
-    </a>
-    <a href="https://www.okx.com/trade-spot/pepe-usdt" target="_blank" class="exchange-link">
-      <img src="img/link/3.png" alt="OKX">
-    </a>
-  </div>
 
-  <section id="roadmap" class="roadmap-section">
-    <div class="roadmap-container">
-      <h1 class="roadmap-title">Pepe Coin Roadmap</h1>
 
+
+  <div class="footer-exchange-links fade-in-up">Pepe Coin phase</div>  
       <div class="phase">
         <h3>📌 Фаза 1: Запуск (Q2 2023)</h3>
         <ul>
@@ -67,7 +54,6 @@
           <li>Маркетинг в соцсетях</li>
         </ul>
       </div>
-
       <div class="phase">
         <h3>🚀 Фаза 2: Рост (Q3–Q4 2023)</h3>
         <ul>
@@ -76,7 +62,6 @@
           <li>Рост комьюнити</li>
         </ul>
       </div>
-
       <div class="phase">
         <h3>🌍 Фаза 3: Экосистема (2024)</h3>
         <ul>
@@ -85,7 +70,6 @@
           <li>Интеграция в игры и метавселенные</li>
         </ul>
       </div>
-
       <div class="phase">
         <h3>🧩 Фаза 4: Будущее (2025+)</h3>
         <ul>
@@ -98,46 +82,77 @@
   </section>
 
   <script>
-    function openBuyModal() {
-  document.getElementById("buyModal").style.display = "block";
-}
-function closeBuyModal() {
-  document.getElementById("buyModal").style.display = "none";
-}
-async function fetchPepePrice() {
-  try {
-    let response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT");
-    let data = await response.json();
-    document.getElementById("pepePrice").innerText = data.price + " USDT";
-    return parseFloat(data.price);
-  } catch (error) {
-    document.getElementById("pepePrice").innerText = "Ошибка загрузки";
-    return null;
-  }
-}
-async function updatePurchaseAmount() {
-  let price = await fetchPepePrice();
-  let usdtAmount = document.getElementById("usdtInput").value;
-  let pepeAmount = price ? (usdtAmount / price).toFixed(2) : "-";
-  document.getElementById("pepeAmount").innerText = pepeAmount + " PEPE";
-}
+  const faders = document.querySelectorAll('.fade-in-up');
 
-  new TradingView.widget({
-    "container_id": "tradingview-widget",
-    "symbol": "BINANCE:PEPEUSDT",
-    "interval": "30",
-    "theme": "light",
-    "style": "1",
-    "locale": "en",
-    "toolbar_bg": "#f1f3f6",
-    "enable_publishing": false,
-    "hide_side_toolbar": false,
-    "allow_symbol_change": true,
-    "width": "100%",
-    "height": "600"
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px"
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
   });
 
 
+    function openBuyModal() {
+      document.getElementById("buyModal").style.display = "block";
+    }
+    function closeBuyModal() {
+      document.getElementById("buyModal").style.display = "none";
+    }
+    async function fetchPepePrice() {
+      try {
+        let response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT");
+        let data = await response.json();
+        document.getElementById("pepePrice").innerText = data.price + " USDT";
+        return parseFloat(data.price);
+      } catch (error) {
+        document.getElementById("pepePrice").innerText = "Ошибка загрузки";
+        return null;
+      }
+    }
+    async function updatePurchaseAmount() {
+      let price = await fetchPepePrice();
+      let usdtAmount = document.getElementById("usdtInput").value;
+      let pepeAmount = price ? (usdtAmount / price).toFixed(2) : "-";
+      document.getElementById("pepeAmount").innerText = pepeAmount + " PEPE";
+    }
+    fetchPepePrice();
+
+    new TradingView.widget({
+      "container_id": "tradingview-widget",
+      "symbol": "BINANCE:PEPEUSDT",
+      "interval": "30",
+      "theme": "light",
+      "style": "1",
+      "locale": "en",
+      "toolbar_bg": "#f1f3f6",
+      "enable_publishing": false,
+      "hide_side_toolbar": false,
+      "allow_symbol_change": true,
+      "width": "100%",
+      "height": "600"
+    });
   </script>
+  <div class="footer-exchange-links">
+    <a href="https://www.binance.com/en/trade/PEPE_USDT" target="_blank">
+      <img src="img/link/1.png" alt="Binance">
+    </a>
+    <a href="https://www.bybit.com/en/trade/spot/PEPE/USDT" target="_blank">
+      <img src="img/link/2.png" alt="Bybit">
+    </a>
+    <a href="https://www.okx.com/trade-spot/pepe-usdt" target="_blank">
+      <img src="img/link/3.png" alt="OKX">
+    </a>
+  </div>
+  
 </body>
 </html>

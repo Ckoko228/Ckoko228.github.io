@@ -3,28 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <title>Pepe Coin</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+
 </head>
 <body>
   <header class="navbar">
     <div class="navbar-container">
-      <h1 class="logo">Pepe Coin</h1>
-      <a href="#roadmap" class="roadmap-link">Roadmap</a>
-      <button class="login-btn" onclick="openModal()">Вход</button>
-      <button class="buy-btn" onclick="openBuyModal()">Buy</button>
+      <div class="navbar-left"></div>
+      <div class="navbar-center">
+        <h1 class="logo">Pepe Coin</h1>
+      </div>
+      <div class="navbar-right">
+        <a href="#roadmap" class="nav-btn">Roadmap</a>
+        <button class="login-btn" onclick="openModal()">Вход</button>
+        <button class="buy-btn" onclick="openBuyModal()">Buy</button>
+      </div>
     </div>
   </header>
 
-  <div id="buyModal" class="buy-modal">
-    <span class="close" onclick="closeBuyModal()">&times;</span>
-    <h2>Купить Pepe Coin</h2>
-    <p>Текущий курс: <span id="pepePrice">Загрузка...</span></p>
-    <input type="number" id="usdtInput" placeholder="Введите сумму в USDT" oninput="updatePurchaseAmount()">
-    <p>Вы получите: <span id="pepeAmount">-</span></p>
-    <button class="buy-btn">Купить</button>
+  <!-- Buy Modal -->
+  <div id="buyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeBuyModal()">&times;</span>
+      <h2>Купить Pepe Coin</h2>
+      <p>Текущий курс: <span id="pepePrice">Загрузка...</span></p>
+      <input type="number" id="usdtInput" placeholder="Введите сумму в USDT" oninput="updatePurchaseAmount()">
+      <p>Вы получите: <span id="pepeAmount">-</span></p>
+      <label for="exchangeSelect">Выберите биржу:</label>
+<select id="exchangeSelect" style="margin: 10px auto; display: block;">
+  <option value="binance">Binance</option>
+  <option value="bybit">Bybit</option>
+  <option value="okx">OKX</option>
+</select>
+<button class="buy-btn" onclick="redirectToExchange()">Купить</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Вход</h2>
+      <div id="login-warning" style="display:none; color: red; margin-bottom: 10px;">
+        Пожалуйста, войдите, чтобы совершить покупку.
+      </div>
+      <input type="text" placeholder="Логин">
+      <input type="password" placeholder="Пароль">
+      <button onclick="handleLogin()">Войти</button>
+    </div>
   </div>
 
   <div class="hero">
@@ -34,7 +63,7 @@
   </div>
 
   <section class="Analysis">
-    <div class="analysis-container">
+    <div class="analysis-container fade-in-up">
       <h2>Live Pepe Coin (PEPE) Chart</h2>
       <div class="chart-box">
         <div class="chart" id="tradingview-widget"></div>
@@ -42,106 +71,42 @@
     </div>
   </section>
 
-
-
-
-  <div class="footer-exchange-links fade-in-up">Pepe Coin phase</div>  
-      <div class="phase">
-        <h3>📌 Фаза 1: Запуск (Q2 2023)</h3>
-        <ul>
-          <li>Создание токена и аудит контракта</li>
-          <li>Листинг на DEX (Uniswap)</li>
-          <li>Маркетинг в соцсетях</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <h3>🚀 Фаза 2: Рост (Q3–Q4 2023)</h3>
-        <ul>
-          <li>Добавление на централизованные биржи (Binance, Bybit, OKX)</li>
-          <li>Старт мем-кампаний</li>
-          <li>Рост комьюнити</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <h3>🌍 Фаза 3: Экосистема (2024)</h3>
-        <ul>
-          <li>Запуск Pepe NFT</li>
-          <li>Pepe DAO и голосования</li>
-          <li>Интеграция в игры и метавселенные</li>
-        </ul>
-      </div>
-      <div class="phase">
-        <h3>🧩 Фаза 4: Будущее (2025+)</h3>
-        <ul>
-          <li>Мобильное приложение</li>
-          <li>Pepe Pay и децентрализованные финансы</li>
-          <li>Мировые партнёрства</li>
-        </ul>
-      </div>
+  <section id="roadmap" class="fade-in-up">
+    <div class="footer-exchange-links">Pepe Coin phase</div>
+    <div class="phase fade-in-up">
+      <h3>📌 Фаза 1: Запуск (Q2 2023)</h3>
+      <ul>
+        <li>Создание токена и аудит контракта</li>
+        <li>Листинг на DEX (Uniswap)</li>
+        <li>Маркетинг в соцсетях</li>
+      </ul>
+    </div>
+    <div class="phase fade-in-up">
+      <h3>🚀 Фаза 2: Рост (Q3–Q4 2023)</h3>
+      <ul>
+        <li>Добавление на централизованные биржи (Binance, Bybit, OKX)</li>
+        <li>Старт мем-кампаний</li>
+        <li>Рост комьюнити</li>
+      </ul>
+    </div>
+    <div class="phase fade-in-up">
+      <h3>🌍 Фаза 3: Экосистема (2024)</h3>
+      <ul>
+        <li>Запуск Pepe NFT</li>
+        <li>Pepe DAO и голосования</li>
+        <li>Интеграция в игры и метавселенные</li>
+      </ul>
+    </div>
+    <div class="phase fade-in-up">
+      <h3>🧩 Фаза 4: Будущее (2025+)</h3>
+      <ul>
+        <li>Мобильное приложение</li>
+        <li>Pepe Pay и децентрализованные финансы</li>
+        <li>Мировые партнёрства</li>
+      </ul>
     </div>
   </section>
 
-  <script>
-  const faders = document.querySelectorAll('.fade-in-up');
-
-  const appearOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px"
-  };
-
-  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    });
-  }, appearOptions);
-
-  faders.forEach(fader => {
-    appearOnScroll.observe(fader);
-  });
-
-
-    function openBuyModal() {
-      document.getElementById("buyModal").style.display = "block";
-    }
-    function closeBuyModal() {
-      document.getElementById("buyModal").style.display = "none";
-    }
-    async function fetchPepePrice() {
-      try {
-        let response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT");
-        let data = await response.json();
-        document.getElementById("pepePrice").innerText = data.price + " USDT";
-        return parseFloat(data.price);
-      } catch (error) {
-        document.getElementById("pepePrice").innerText = "Ошибка загрузки";
-        return null;
-      }
-    }
-    async function updatePurchaseAmount() {
-      let price = await fetchPepePrice();
-      let usdtAmount = document.getElementById("usdtInput").value;
-      let pepeAmount = price ? (usdtAmount / price).toFixed(2) : "-";
-      document.getElementById("pepeAmount").innerText = pepeAmount + " PEPE";
-    }
-    fetchPepePrice();
-
-    new TradingView.widget({
-      "container_id": "tradingview-widget",
-      "symbol": "BINANCE:PEPEUSDT",
-      "interval": "30",
-      "theme": "light",
-      "style": "1",
-      "locale": "en",
-      "toolbar_bg": "#f1f3f6",
-      "enable_publishing": false,
-      "hide_side_toolbar": false,
-      "allow_symbol_change": true,
-      "width": "100%",
-      "height": "600"
-    });
-  </script>
   <div class="footer-exchange-links">
     <a href="https://www.binance.com/en/trade/PEPE_USDT" target="_blank">
       <img src="img/link/1.png" alt="Binance">
@@ -153,6 +118,105 @@
       <img src="img/link/3.png" alt="OKX">
     </a>
   </div>
-  
+
+<script>
+    let isLoggedIn = false;
+    let buyAfterLogin = false;
+
+    function openBuyModal() {
+      if (isLoggedIn) {
+        document.getElementById("buyModal").style.display = "flex";
+      } else {
+        buyAfterLogin = true;
+        showLoginWithWarning();
+      }
+    }
+
+    function closeBuyModal() {
+      document.getElementById("buyModal").style.display = "none";
+    }
+
+    function openModal() {
+      buyAfterLogin = false;
+      document.getElementById("loginModal").style.display = "flex";
+      document.getElementById("login-warning").style.display = "none";
+    }
+
+    function closeModal() {
+      document.getElementById("loginModal").style.display = "none";
+    }
+
+    function showLoginWithWarning() {
+      document.getElementById("loginModal").style.display = "flex";
+      document.getElementById("login-warning").style.display = "block";
+    }
+
+    function handleLogin() {
+      isLoggedIn = true;
+      closeModal();
+      if (buyAfterLogin) {
+        openBuyModal();
+        buyAfterLogin = false;
+      }
+    }
+
+    async function fetchPepePrice() {
+      try {
+        let response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT");
+        let data = await response.json();
+        document.getElementById("pepePrice").innerText = data.price + " USDT";
+        return parseFloat(data.price);
+      } catch (error) {
+        document.getElementById("pepePrice").innerText = "Ошибка загрузки";
+        return null;
+      }
+    }
+
+    async function updatePurchaseAmount() {
+      let price = await fetchPepePrice();
+
+    function redirectToExchange() {
+  const exchangeSelect = document.getElementById("exchangeSelect");
+  const selected = exchangeSelect.value;
+  const urls = {
+    binance: "https://www.binance.com/en/trade/PEPE_USDT",
+    bybit: "https://www.bybit.com/en/trade/spot/PEPE/USDT",
+    okx: "https://www.okx.com/trade-spot/pepe-usdt"
+  };
+  window.open(urls[selected], "_blank");
+}
+      let usdtAmount = document.getElementById("usdtInput").value;
+      let pepeAmount = price ? (usdtAmount / price).toFixed(2) : "-";
+      document.getElementById("pepeAmount").innerText = pepeAmount + " PEPE";
+    }
+
+    fetchPepePrice();
+
+    const faders = document.querySelectorAll('.fade-in-up');
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" };
+    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    new TradingView.widget({
+      container_id: "tradingview-widget",
+      symbol: "BINANCE:PEPEUSDT",
+      interval: "30",
+      theme: "light",
+      style: "1",
+      locale: "en",
+      toolbar_bg: "#f1f3f6",
+      enable_publishing: false,
+      hide_side_toolbar: false,
+      allow_symbol_change: true,
+      width: "100%",
+      height: "600"
+    });
+  </script>
 </body>
 </html>

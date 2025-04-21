@@ -1011,3 +1011,208 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1d833a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-content button:hover {
+  background-color: #14642d;
+}
+
+.modal .close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.phase {
+  background-color: #1d833a;
+  border-left: 5px solid #2b8ef5;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.phase:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background-color: #2d944a;
+}
+.phase {
+  background-color: #1d833a;
+  color: white;
+  border-left: 5px solid #2b8ef5;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  max-width: 900px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.phase:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background-color: #26974f;
+}
+
+.phase h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.phase ul {
+  padding-left: 20px;
+}
+
+.phase li {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+/* Live Pepe Coin Chart блок */
+.analysis-container {
+  background-color: #1d833a;
+  color: white;
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.analysis-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: white;
+}
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar-left,
+.navbar-right,
+.navbar-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-right {
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.nav-btn {
+  background-color: white;
+  color: #2b8ef5;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #1d833a;
+  color: white;
+}
+
+.logo {
+  font-size: 32px;
+  margin: 0;
+  color: white;
+}
+html {
+  scroll-behavior: smooth;
+}
+    body {
+      background-color: #1d833a;
+      font-family: 'Inter', sans-serif;
+    }
+    .footer-exchange-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+      background-color: #1d833a;
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .footer-exchange-links a {
+      width: 80px;
+      height: 80px;
+      background-color: #2b8ef5;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .footer-exchange-links a:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-exchange-links img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .footer-exchange-links:first-child {
+      font-size: 28px;
+      color: white;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 20px;
+    }

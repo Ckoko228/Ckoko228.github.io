@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Корзина</title>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body>
+  <header>
+    <h1>Корзина</h1>
+    <nav>
+      <a href="index.html">Главная</a>
+      <a href="catalog.html">Каталог</a>
+      <a href="cart.html">Корзина</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+  </header>
+
+  <main id="cart"></main>
+
+  <!-- Модальное окно -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <p>Ваш заказ успешно оформлен!</p>
+    </div>
+  </div>
+
+  <script>
+    const cartElement = document.getElementById('cart');
+
+    function loadCart() {
+      return JSON.parse(localStorage.getItem('cart') || '[]');
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    function removeFromCart(id) {
+      let cart = loadCart();
+      cart = cart.filter(item => item.id !== id);
+      saveCart(cart);
+      displayCart();
+    }
+
+    function displayCart() {
+      const cart = loadCart();
+      if (cart.length === 0) {
+        cartElement.innerHTML = '<p>Корзина пуста</p>';
+        return;
+      }
+
+      let total = 0;
+      cartElement.innerHTML = cart.map(item => {
+        const subtotal = item.price * item.count;
+        total += subtotal;
+        return `
+          <div class="product">
+            <h3>${item.name}</h3>
+            <p>Цена: ${item.price.toLocaleString()} ₽</p>
+            <p>Количество: ${item.count}</p>
+            <p>Сумма: ${subtotal.toLocaleString()} ₽</p>
+            <button onclick="removeFromCart(${item.id})">Удалить</button>
+          </div>
+        `;
+      }).join('');
+
+      cartElement.innerHTML += `
+        <h3>Итого: ${total.toLocaleString()} ₽</h3>
+        <button class="order" onclick="submitOrder()">Заказать</button>
+      `;
+    }
+
+    function submitOrder() {
+      localStorage.removeItem('cart');
+      displayCart();
+      openModal();
+    }
+
+    function openModal() {
+      document.getElementById("orderModal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("orderModal").style.display = "none";
+    }
+
+    displayCart();
+  </script>
+</body>
+</html>

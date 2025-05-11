@@ -1,24 +1,127 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Автосалон</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Главная страница автосалона</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Подключаем Slick Carousel CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 </head>
 <body>
   <header>
-    <h1>Добро пожаловать в Автосалон</h1>
-    <nav>
-      <a href="index.html">Главная</a>
-      <a href="catalog.html">Каталог</a>
-      <a href="cart.html">Корзина</a>
-      <a href="contacts.html">Контакты</a>
-    </nav>
+    <div class="header-container">
+      <h1>Добро пожаловать в наш автосалон!</h1>
+      <nav>
+        <a href="catalog.html">Каталог</a>
+        <a href="about.html">О нас</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="cart.html">Корзина</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    <h2>Лучшие автомобили для вас!</h2>
-    <p>Покупайте качественные автомобили по доступной цене.</p>
-  </main>
-  <footer>© 2025 Автосалон</footer>
+
+  <section class="popular-cars">
+    <h2>Популярные автомобили</h2>
+    <div class="car-row">
+      <div class="car-card">
+        <img src="img/cars/x5.png" alt="BMW X5" />
+        <h3>BMW X5</h3>
+        <p>Цена: 55,000 €</p>
+        <button onclick="window.location.href='product_page.html?id=1'">Подробнее</button>
+      </div>
+      <div class="car-card">
+        <img src="img/cars/q7.png" alt="Audi Q7" />
+        <h3>Audi Q7</h3>
+        <p>Цена: 60,000 €</p>
+        <button onclick="window.location.href='product_page.html?id=2'">Подробнее</button>
+      </div>
+      <div class="car-card">
+        <img src="img/cars/gle.png" alt="Mercedes GLE" />
+        <h3>Mercedes GLE</h3>
+        <p>Цена: 65,000 €</p>
+        <button onclick="window.location.href='product_page.html?id=3'">Подробнее</button>
+      </div>
+      <div class="car-card">
+        <img src="img/cars/rav4.png" alt="Toyota Land Cruiser" />
+        <h3>Toyota Rav4</h3>
+        <p>Цена: 40,000 €</p>
+        <button onclick="window.location.href='product_page.html?id=4'">Подробнее</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="special-offers">
+    <h2>Акции и специальные предложения</h2>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <img src="img/main/чехол.png" alt="Бесплатные чехлы">
+        <h3>Подарок: Чехлы на сиденья</h3>
+        <p>При покупке любого автомобиля — комплект стильных чехлов в подарок.</p>
+      </div>
+      <div class="offer-card">
+        <img src="img/main/шины.png" alt="Зимняя резина">
+        <h3>Зимняя резина в комплекте</h3>
+        <p>Сэкономьте до 500 € — зимняя резина входит в стоимость.</p>
+      </div>
+      <div class="offer-card">
+        <img src="img/main/to.png" alt="Бесплатное ТО">
+        <h3>Бесплатное ТО на год</h3>
+        <p>Первое техническое обслуживание — за наш счёт!</p>
+      </div>
+      <div class="offer-card">
+        <img src="img/main/gift-cart.png" alt="Подарочная карта">
+        <h3>Подарочная карта 200 €</h3>
+        <p>Получите подарочную карту при покупке автомобиля до конца месяца.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="test-drive">
+    <h2>Запишитесь на тест-драйв</h2>
+    <button onclick="window.location.href='test_drive.html'">Записаться</button>
+  </section>
+
+<section class="reviews">
+  <h2>Отзывы наших клиентов</h2>
+  <div class="review-carousel">
+    <div class="review-item">
+      <p>"Отличный сервис, покупка прошла быстро и без проблем. Благодарю за помощь в выборе автомобиля!"</p>
+      <p><strong>Иван Петров</strong></p>
+    </div>
+    <div class="review-item">
+      <p>"Очень довольны покупкой. Автомобиль на 100% оправдал наши ожидания!"</p>
+      <p><strong>Мария Иванова</strong></p>
+    </div>
+    <div class="review-item">
+      <p>"Профессионализм сотрудников и огромное количество автомобилей на выбор. Спасибо!"</p>
+      <p><strong>Дмитрий Смирнов</strong></p>
+    </div>
+    <div class="review-item">
+      <p>"Очень удобная покупка в рассрочку. Всё понятно и прозрачно, никаких скрытых комиссий!"</p>
+      <p><strong>Елена Васильева</strong></p>
+    </div>
+  </div>
+  <div class="carousel-buttons">
+    <button class="prev-btn" disabled>←</button>
+    <button class="next-btn">→</button>
+  </div>
+</section>
+
+
+
+
+  <footer>
+    <div class="footer-container">
+      <p>&copy; 2025 Автосалон. Все права защищены.</p>
+      <p><a href="contacts.html">Контакты</a> | <a href="privacy.html">Политика конфиденциальности</a></p>
+    </div>
+  </footer>
+
+  <!-- Подключение Slick Carousel JS -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

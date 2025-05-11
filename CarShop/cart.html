@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Корзина</title>
   <link rel="stylesheet" href="style.css" />
-  
 </head>
 <body>
   <header>
@@ -29,16 +28,42 @@
   </div>
 
   <script>
-    const cartElement = document.getElementById('cart');
+    // Функция для добавления товара в корзину
+    function addToCart(product) {
+      console.log("Передан товар в корзину: ", product); // Выводим товар в консоль для отладки
 
+      if (!product || !product.id || !product.name || !product.price) {
+        console.error('Ошибка: Некорректные данные товара');
+        return;
+      }
+
+      const cart = loadCart();
+      const existingProduct = cart.find(item => item.id === product.id);
+
+      if (existingProduct) {
+        // Если товар уже есть в корзине, увеличиваем его количество
+        existingProduct.count += 1;
+      } else {
+        // Если товара нет в корзине, добавляем с количеством 1
+        product.count = 1;  // Инициализация count в 1
+        cart.push(product);
+      }
+
+      saveCart(cart);
+      displayCart();
+    }
+
+    // Загрузка корзины из localStorage
     function loadCart() {
       return JSON.parse(localStorage.getItem('cart') || '[]');
     }
 
+    // Сохранение корзины в localStorage
     function saveCart(cart) {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
 
+    // Функция удаления товара из корзины
     function removeFromCart(id) {
       let cart = loadCart();
       cart = cart.filter(item => item.id !== id);
@@ -46,8 +71,10 @@
       displayCart();
     }
 
+    // Функция отображения корзины
     function displayCart() {
       const cart = loadCart();
+      const cartElement = document.getElementById('cart');
       if (cart.length === 0) {
         cartElement.innerHTML = '<p>Корзина пуста</p>';
         return;
@@ -57,37 +84,58 @@
       cartElement.innerHTML = cart.map(item => {
         const subtotal = item.price * item.count;
         total += subtotal;
+
         return `
           <div class="product">
             <h3>${item.name}</h3>
-            <p>Цена: ${item.price.toLocaleString()} ₽</p>
-            <p>Количество: ${item.count}</p>
-            <p>Сумма: ${subtotal.toLocaleString()} ₽</p>
+            <p>Цена: ${item.price.toLocaleString()} €</p>
+            <div class="quantity-controls">
+              <button onclick="changeCount(${item.id}, -1)">–</button>
+              <span>${item.count}</span>
+              <button onclick="changeCount(${item.id}, 1)">+</button>
+            </div>
             <button onclick="removeFromCart(${item.id})">Удалить</button>
           </div>
         `;
       }).join('');
 
       cartElement.innerHTML += `
-        <h3>Итого: ${total.toLocaleString()} ₽</h3>
-        <button class="order" onclick="submitOrder()">Заказать</button>
+        <div class="total">
+          <h2>Общая стоимость: ${total.toLocaleString()} €</h2>
+          <button class="order" onclick="submitOrder()">Заказать</button>
+        </div>
       `;
     }
 
+    // Функция изменения количества товара
+    function changeCount(id, delta) {
+      const cart = loadCart();
+      const item = cart.find(i => i.id === id);
+      if (item) {
+        item.count = Math.max(1, item.count + delta); // минимальное количество товара — 1
+        saveCart(cart);
+        displayCart();
+      }
+    }
+
+    // Функция оформления заказа
     function submitOrder() {
       localStorage.removeItem('cart');
       displayCart();
       openModal();
     }
 
+    // Открытие модального окна
     function openModal() {
       document.getElementById("orderModal").style.display = "block";
     }
 
+    // Закрытие модального окна
     function closeModal() {
       document.getElementById("orderModal").style.display = "none";
     }
 
+    // Начальная загрузка корзины
     displayCart();
   </script>
 </body>

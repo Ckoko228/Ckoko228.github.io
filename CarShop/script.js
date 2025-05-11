@@ -364,4 +364,37 @@ function filterAndSortProducts() {
     `;
     catalog.appendChild(div);
   });
+const nextButton = document.querySelector('.next-btn');
+const prevButton = document.querySelector('.prev-btn');
+const reviewCarousel = document.querySelector('.review-carousel');
+const reviewItems = document.querySelectorAll('.review-item');
+
+let currentIndex = 0;
+
+nextButton.addEventListener('click', () => {
+  if (currentIndex < reviewItems.length - 1) {
+    currentIndex++;
+    updateCarousel();
+  }
+});
+
+prevButton.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+    updateCarousel();
+  }
+});
+
+function updateCarousel() {
+  const offset = -currentIndex * (reviewItems[0].offsetWidth + 20); // 20 - отступ между элементами
+  reviewCarousel.style.transform = `translateX(${offset}px)`;
+  
+  // Управление кнопками
+  prevButton.disabled = currentIndex === 0;
+  nextButton.disabled = currentIndex === reviewItems.length - 1;
 }
+
+// Инициализация кнопок
+updateCarousel();
+}
+

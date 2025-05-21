@@ -554,8 +554,6 @@ body {
 
 
 
-
-
 .published {
   position: absolute;
   left: 23.8%;
@@ -1240,7 +1238,7 @@ html {
     h2 {
       font-size: 24px;
       margin-top: 20px;
-      color: #f8f8f8;
+      color: #1d833a;
     }
 
     p {
@@ -1272,7 +1270,7 @@ html {
     }
     .nav-btn {
       background-color: white;
-      color: #1d833a;
+      color: #2b8ef5;
       border: none;
       padding: 10px 15px;
       font-size: 16px;
@@ -1287,4 +1285,3 @@ html {
       background-color: #1d833a;
       color: white;
     }
-    
